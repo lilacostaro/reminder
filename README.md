@@ -1,2 +1,2 @@
-# agenda
-App Web Agenda Criado com Django
+# Reminder
+App Web Reminder, uma lista de compras rriada com Django
