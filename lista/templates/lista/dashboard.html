@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title%} Dashboard {% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Dashboard</h1>
+    <div class="container dashboard">
+        <div class="col-4 dashboard-box" id="dashboard-lastdays">
+            <h4>Valor gasto no mês</h4>
+            <span>{{ valorgastorecently.valor__sum|floatformat:2 }}</span>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-buy">
+            <h4>Itens a Comprar</h4>
+            <span>{{itenscomprar}}</span>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-bought">
+            <h4>Itens Finalizados</h4>
+            <span>{{itenscomprado}}</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

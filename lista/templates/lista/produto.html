@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title%} Produto {% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h3>{{lista.product}}</h3>
+    <br>
+    <p>Quantidade: {{lista.quantidade}}</p>
+    <p>Observação: {{lista.obs}}</p>
+    <p>Status: {{lista.done}}</p>
+    <p>Preço: {{lista.valor}}</p>
+
+</div>
+
+{% endblock %}

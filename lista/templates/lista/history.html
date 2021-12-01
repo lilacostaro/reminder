@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title%} Histórico de Compras {% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <H1> Histórico de Compras </H1>
+    <a id='add-link' href="/">
+        <div class="col-4 add-div">
+            <i class="fas fa-list"></i> Lista
+        </div>
+    </a>
+    <div class="col-6 search-div">
+        <form method="GET" id="search-form">
+            <div class="col-10 align-items">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar..." value="{{ request.GET.search}}">
+            </div>
+            <div class="col-1 align-items-2">
+                <i class="fas fa-search" id="search-btn"></i>
+            </div>
+        </form>
+    </div>
+
+    <br>
+    <br>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container">
+        <table class="table table-hover table-borderless">
+            <thead>
+                <tr class="lista-header">
+                    <td scope="col">Produto</td>
+                    <td scope="col">Quantidade</td>
+                    <td scope="col">Data</td>
+                    <td scope="col">Status</td>
+                    <td scope="col">Editar</td>
+                    <td scope="col">Excluir</td>
+                </tr>
+            </thead>
+            {% for produto in items %}
+            {% if produto.done == 'Comprar' %}
+                <tbody>
+                    <tr class="lista-item">
+                {% else %}
+                <tbody>
+                    <tr class="lista-item done">
+                {% endif %}
+                        <td><a href="/product/{{produto.id}}">{{produto.produto}}</a></td>
+                        <td>{{produto.quantidade}}</td>
+                        <td>{{produto.get_data_criacao}}</td>
+                        <td><a href="changestatus/{{produto.id}}"><i class="fas fa-check"></i></a></td>
+                        <td><a href="edit/{{produto.id}}"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="delete/{{produto.id}}" class="delete-btn"><i class="fas fa-trash"></i></a></td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if items.has_previous %}
+                <a href="?page={{ items.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+                <span class="current">
+                    {{ items.number }} de {{ items.paginator.num_pages }}
+                </span>
+            {% if items.has_next %}
+                <a href="?page={{ items.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%}Editando {{item.produto}}{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Editando {{item.produto}}</h1>
+
+        <div class="form-div">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <input type="submit" class="col-12 btn editItem-button" value="Editar Item">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
+
