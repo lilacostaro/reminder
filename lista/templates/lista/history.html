@@ -16,7 +16,7 @@
                 <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar..." value="{{ request.GET.search}}">
             </div>
             <div class="col-1 align-items-2">
-                <i class="fas fa-search" id="search-btn"></i>
+                <i class="fas fa-search" id="search-btn" value="{{ request.GET.search}}"></i>
             </div>
         </form>
     </div>
