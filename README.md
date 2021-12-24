@@ -1,2 +1,2 @@
 # Reminder
-App Web Reminder, uma lista de compras rriada com Django
+App Web Reminder, uma lista de compras criada com Django
